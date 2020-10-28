@@ -4,7 +4,14 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun getSubtraction(list1: List<String>, list2: List<String>): List<String> {
-    TODO("not implemented")
+    return (list1.groupingBy { it }.eachCount()) - (list2.groupingBy { it }.eachCount())
+}
+
+private operator fun Map<String, Int>.minus(other: Map<String, Int>) = this.entries.flatMap { entry ->
+    var list = emptyList<String>()
+    list += if (other.containsKey(entry.key)) generateSequence { entry.key }.take((entry.value - other
+        .getValue(entry.key)).toUInt().toInt()).toList() else generateSequence { entry.key }.take(entry.value).toList()
+    list
 }
 
 class SubtractTest {

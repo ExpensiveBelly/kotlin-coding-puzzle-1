@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun equalDigitFrequency(i1: Int, i2: Int): Boolean {
-    TODO("not implemented")
+    return i1.toString().groupingBy { it }.eachCount() == i2.toString().groupingBy { it }.eachCount()
 }
 
 class DigitFrequencyTest {

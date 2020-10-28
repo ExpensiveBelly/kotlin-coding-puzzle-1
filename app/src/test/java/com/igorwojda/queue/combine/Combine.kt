@@ -4,8 +4,23 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun combine(q1: Queue<*>, q2: Queue<*>): Queue<*> {
-    TODO("not implemented")
+    var combined = emptyList<Any?>()
+    var e1 = q1.remove()
+    var e2 = q2.remove()
+    while (e1 != null || e2 != null) {
+        combined += e1
+        combined += e2
+        e1 = q1.remove()
+        e2 = q2.remove()
+    }
+    val queue = Queue<Any>()
+    combined = combined.mapNotNull { it }
+    combined.forEach {
+        queue.add(it)
+    }
+    return queue
 }
+
 
 private class Queue<E> {
     private val list = mutableListOf<E>()

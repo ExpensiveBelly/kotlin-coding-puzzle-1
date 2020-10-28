@@ -2,24 +2,49 @@ package com.igorwojda.stack.basic
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import java.util.*
+
+//private class Stack<E> {
+//    var elements: List<E> = emptyList()
+//    val size
+//        get() = elements.size
+//
+//    fun add(element: E) {
+//        elements += element
+//    }
+//
+//    fun remove(): E? {
+//        return elements.lastOrNull()?.also { elements -= it }
+//    }
+//
+//    fun peek(): E? {
+//        return elements.lastOrNull()
+//    }
+//
+//    fun isEmpty(): Boolean {
+//        return elements.isEmpty()
+//    }
+//}
 
 private class Stack<E> {
-    var size = 0
+    private var elements: LinkedList<E> = LinkedList()
+    val size
+        get() = elements.size
 
     fun add(element: E) {
-        TODO("not implemented")
+        elements.add(element)
     }
 
     fun remove(): E? {
-        TODO("not implemented")
+        return if (elements.isEmpty()) null else elements.removeLast()
     }
 
     fun peek(): E? {
-        TODO("not implemented")
+        return elements.lastOrNull()
     }
 
     fun isEmpty(): Boolean {
-        TODO("not implemented")
+        return elements.isEmpty()
     }
 }
 

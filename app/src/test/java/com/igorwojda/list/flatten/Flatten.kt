@@ -4,8 +4,13 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 fun flatten(list: List<*>): List<*> {
-    TODO("not implemented")
-}
+    return list.flatMap {
+        when (it) {
+            is List<*> -> flatten(it)
+            else -> listOf(it)
+        }
+    }
+ }
 
 class FlattenTest {
     @Test

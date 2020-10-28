@@ -9,11 +9,26 @@ private data class Node<E : Comparable<E>>(
     var right: Node<E>? = null
 ) {
     fun insert(e: E) {
-        TODO("not implemented")
+        if (e == data) return
+
+        if (e < data) {
+            if (left == null) left = Node(e) else left?.insert(e)
+        } else {
+            if (right == null) right = Node(e) else right?.insert(e)
+        }
     }
 
     fun contains(e: E): Boolean {
-        TODO("not implemented")
+        if (e == data) return true
+
+        return when {
+            e < data -> when (left) {
+                null -> false
+                else -> left!!.contains(e)
+            }
+            right == null -> false
+            else -> right!!.contains(e)
+        }
     }
 }
 

@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun chunk(list: List<Int>, size: Int): List<List<Int>> {
-    TODO("not implemented")
+   return list.chunked(size)
 }
 
 class ListChunkTest {

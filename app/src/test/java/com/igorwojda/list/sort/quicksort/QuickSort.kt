@@ -4,7 +4,14 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun quickSort(list: MutableList<Int>, left: Int = 0, right: Int = list.lastIndex): List<Number> {
-    TODO("not implemented")
+    return list.quickSort()
+}
+
+fun <T : Comparable<T>> List<T>.quickSort(): List<T> {
+    if (this.size <= 1) return this
+    val pivot = this.first()
+    val (smaller, greater) = this.drop(1).partition { it <= pivot }
+    return smaller.quickSort() + pivot + greater.quickSort()
 }
 
 private fun <T> MutableList<T>.swap(index1: Int, index2: Int) {

@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 fun generatePyramid(n: Int): List<String> {
-    TODO("not implemented")
+    return (1..n).fold(emptyList()) { acc: List<String>, i: Int -> acc + listOf(" ".repeat(n - i) + "#".repeat((acc.lastOrNull()?.count { it == '#' }?.plus(2) ?: 1)) + " ".repeat(n - i)) }
 }
 
 class PyramidGeneratorTest {

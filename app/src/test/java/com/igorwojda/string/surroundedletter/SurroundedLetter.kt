@@ -3,9 +3,9 @@ package com.igorwojda.string.surroundedletter
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun surroundedLetter(str: String): Boolean {
-    TODO("not implemented")
-}
+private fun surroundedLetter(str: String) =
+//    return str.mapNotNull { if (it.isLetter()) it else null }.map { "+$it+" }.all { it in str } //Wrong solution as it doesn't consider duplicates
+    str.mapNotNull { if (it.isLetter()) it else null }.groupingBy { it }.eachCount().mapKeys { "+${it.key}+" }.all { entry -> str.sumBy { if (entry.key in str) 1 else 0 }.div(str.length) == entry.value }
 
 class CaesarCipherTest {
     @Test

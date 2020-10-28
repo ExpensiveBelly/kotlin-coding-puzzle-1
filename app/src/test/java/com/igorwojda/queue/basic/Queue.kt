@@ -2,21 +2,76 @@ package com.igorwojda.queue.basic
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import java.util.*
+
+//private class Queue<E> {
+//    var size = 0
+//        private set
+//        get() = elements.size
+//
+//    private var elements: List<E> = emptyList()
+//
+//    fun add(element: E) {
+//        elements += element
+//    }
+//
+//    fun remove(): E? = elements.firstOrNull()?.also { elements -= it }
+//
+//    fun peek(): E? = elements.firstOrNull()
+//
+//    fun isEmpty(): Boolean {
+//        return elements.isEmpty()
+//    }
+//}
+
+//private class Queue<E> {
+//    var size = 0
+//        private set
+//        get() = elements.size
+//
+//    private var elements: LinkedList<E> = LinkedList()
+//
+//    fun add(element: E) {
+//        elements.add(element)
+//    }
+//
+//    fun remove(): E? = elements.firstOrNull()?.also { elements.remove(it) }
+//
+//    fun peek(): E? = elements.firstOrNull()
+//
+//    fun isEmpty(): Boolean {
+//        return elements.isEmpty()
+//    }
+//}
 
 private class Queue<E> {
     var size = 0
         private set
+        get() = firsStack.size + secondStack.size
+
+    private var firsStack: Stack<E> = Stack()
+    private var secondStack: Stack<E> = Stack()
 
     fun add(element: E) {
-        TODO("not implemented")
+        firsStack.push(element)
     }
 
-    fun remove(): E? = TODO("not implemented")
+    fun remove(): E? {
+        while (firsStack.isNotEmpty()) {
+            secondStack.push(firsStack.pop())
+        }
+        return if (secondStack.isNotEmpty()) secondStack.pop() else null
+    }
 
-    fun peek(): E? = TODO("not implemented")
+    fun peek(): E? {
+        while (firsStack.isNotEmpty()) {
+            secondStack.push(firsStack.pop())
+        }
+        return if (secondStack.isNotEmpty()) secondStack.peek() else null
+    }
 
     fun isEmpty(): Boolean {
-        TODO("not implemented")
+        return firsStack.isEmpty() && secondStack.isEmpty()
     }
 }
 

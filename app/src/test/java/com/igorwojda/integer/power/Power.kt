@@ -2,9 +2,10 @@ package com.igorwojda.integer.power
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import kotlin.math.pow
 
 private fun power(base: Int, exponent: Int): Int {
-    TODO("not implemented")
+    return base.toFloat().pow(exponent).toInt()
 }
 
 class PowerTest {

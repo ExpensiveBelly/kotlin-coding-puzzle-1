@@ -1,11 +1,32 @@
 package com.igorwojda.integer.spiralmatrixgenerator
 
+import com.ichipsea.kotlin.matrix.MutableMatrix
+import com.ichipsea.kotlin.matrix.toMutableList
+import com.ichipsea.kotlin.matrix.toMutableMatrix
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun generateSpiralMatrix(n: Int): List<MutableList<Int?>> {
-    TODO("not implemented")
+private fun generateSpiralMatrix(n: Int): List<MutableList<Int>> {
+    return spiral(
+        matrix = (1..Math.pow(n.toDouble(), 2.toDouble()).toInt()).toMutableMatrix(n, n),
+        initialCount = 0,
+        start = 0,
+        end = n - 1
+    ).toMutableList()
+        .chunked(n).map { it.toMutableList() }.also { println(it) }
 }
+
+fun spiral(matrix: MutableMatrix<Int>, initialCount: Int, start: Int, end: Int): MutableMatrix<Int> =
+    if (start > end) matrix
+    else {
+        var count = initialCount
+        (start until end + 1).forEach { index -> run { matrix[start, index] = ++count }.also { println(" 1 matrix[$start, $index] = $count")} }
+        (start + 1 until end + 1).forEach { index -> run { matrix[index, end] = ++count }.also { println("2 matrix[$index, $end] = $count")} }
+        (end - 1 downTo start).forEach { index -> run {  matrix[end, index] = ++count }.also { println("3 matrix[$end, $index] = $count")} }
+        (end - 1 downTo start + 1).forEach { index -> run {matrix[index, start] = ++count }.also { println("4 matrix[$index, $start] = $count")} }
+
+        spiral(matrix, count, start + 1, end - 1)
+    }
 
 class SpiralMatrixGeneratorTest {
     @Test

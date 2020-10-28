@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun anyCallback(list: List<Int>, callback: (Int) -> Boolean): Boolean {
-    TODO("not implemented")
+    return list.any(callback)
 }
 
 class AnyCallbackTest {

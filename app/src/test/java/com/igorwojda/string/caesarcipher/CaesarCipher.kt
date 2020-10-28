@@ -4,10 +4,18 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun encodeCaesarCipher(str: String, shift: Int): String {
-    TODO("not implemented")
+    val original = ("abcdefghijklmnopqrstuvwxyz").toCharArray()
+    val shifted = original.shift(shift % original.size).joinToString(separator = "")
+    val beginning = original.indexOf(str.first())
+    val end = original.indexOf(str.last())
+
+    return shifted.slice(beginning..end)
 }
 
+private fun CharArray.shift(n: Int) = let { sliceArray(n until size) + sliceArray(0 until size) }
+
 class CaesarCipherTest {
+
     @Test
     fun `"abc" with shift 1 return "bcd"`() {
         encodeCaesarCipher("abc", 1) shouldEqual "bcd"

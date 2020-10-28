@@ -4,7 +4,14 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun fizzBuzz(n: Int): List<String> {
-    TODO("not implemented")
+    return generateSequence(1) { it + 1 }.take(n).toList().map {
+        when {
+            it.rem(15) == 0 -> "FizzBuzz"
+            it.rem(3) == 0 -> "Fizz"
+            it.rem(5) == 0 -> "Buzz"
+            else -> it.toString()
+        }
+    }
 }
 
 class FizzBuzzTest {

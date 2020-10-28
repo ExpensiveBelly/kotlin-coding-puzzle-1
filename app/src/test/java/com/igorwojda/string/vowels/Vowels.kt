@@ -4,17 +4,26 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun vowels(str: String): Int {
-    TODO("not implemented")
+    return str.filter { char -> Vowels.values().any { it.value == char.toString().toLowerCase() } }.count()
+}
+
+enum class Vowels(val value: String) {
+    A("a"),
+    E("e"),
+    I("i"),
+    O("o"),
+    U("u"),
+    Y("y")
 }
 
 class VowelsTest {
     @Test
-    fun `"aeiouy" has 6 vovels`() {
+    fun `"aeiouy" has 6 vowels`() {
         vowels("aeiouy") shouldEqual 6
     }
 
     @Test
-    fun `"AEIOUY" has 6 vovels`() {
+    fun `"AEIOUY" has 6 vowels`() {
         vowels("AEIOUY") shouldEqual 6
     }
 

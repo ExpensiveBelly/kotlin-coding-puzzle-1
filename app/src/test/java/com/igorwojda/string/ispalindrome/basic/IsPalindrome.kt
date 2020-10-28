@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun isPalindrome(str: String): Boolean {
-    TODO("not implemented")
+    return str == str.reversed()
 }
 
 class IsPalindromeTest {

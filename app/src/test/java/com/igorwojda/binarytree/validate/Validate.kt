@@ -4,7 +4,40 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun isValidSearchBinaryTree(node: Node<Int>): Boolean {
-    TODO("not implemented")
+    val list = bfs(node)
+    return list.zip(list.drop(1)).all { (a, b) -> a < b }
+}
+
+private fun bfs(node: Node<Int>, list: MutableList<Int> = mutableListOf()): MutableList<Int> {
+    node.left?.let { bfs(it, list) }
+
+    list.add(node.data)
+
+    node.right?.let { bfs(it, list) }
+
+    return list
+}
+
+private fun isValidSearchBinaryTree(node: Node<Int>, min: Int? = null, max: Int? = null): Boolean {
+    if (min != null && node.data < min) {
+        return false
+    }
+
+    if (max != null && node.data > max) {
+        return false
+    }
+
+    val leftNode = node.left
+    if (leftNode != null) {
+        return isValidSearchBinaryTree(leftNode, min, node.data)
+    }
+
+    val rightNode = node.right
+    if (rightNode != null) {
+        return isValidSearchBinaryTree(rightNode, node.data, max)
+    }
+
+    return true
 }
 
 class IsValidSearchBinaryTreeTest {

@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun maxOccurrentChar(str: String): Char? {
-    TODO("not implemented")
+    return str.groupingBy { it }.eachCount().maxBy { it.value }?.key
 }
 
 class StringMaxCharTest {

@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun factorial(n: Int): Int {
-    TODO("not implemented")
+    return (n downTo 1).fold(1) { acc: Int, i: Int -> acc * i }
 }
 
 class RecursiveFactorial {

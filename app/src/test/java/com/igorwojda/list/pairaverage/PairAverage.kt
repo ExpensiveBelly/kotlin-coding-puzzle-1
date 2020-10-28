@@ -1,10 +1,12 @@
 package com.igorwojda.list.pairaverage
 
+import com.igorwojda.list.sumzero.combinations
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 fun hasAverage(list: List<Int>, average: Double): Boolean {
-    TODO("not implemented")
+    if (list.isEmpty() || list.size == 1) return false
+    return list.toSet().combinations(2).map { ((it.first() + it.elementAt(1)).toDouble()).div(2) }.find { it == average } != null
 }
 
 private fun <E> MutableList<E>.aaa2(a: E) {

@@ -4,7 +4,9 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun reverseInt(i: Int): Int {
-    TODO("not implemented")
+    if (i.toString().count() == 1) return i
+    val number = (if (i < 0) i.toString().drop(1) else i.toString()).toCharArray().reversed().dropWhile { it == '0' }.joinToString("").toInt()
+    return if (i < 0) number.unaryMinus() else number
 }
 
 class ReverseIntTest {

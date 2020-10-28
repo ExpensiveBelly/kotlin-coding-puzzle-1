@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun squareEquals(list: List<Int>, squared: List<Int>): Boolean {
-    TODO("not implemented")
+    return list.map { Math.pow(it.toDouble(), 2.toDouble()).toInt() }.groupBy { it } == squared.groupBy { it }
 }
 
 class SquareEqualsTest {

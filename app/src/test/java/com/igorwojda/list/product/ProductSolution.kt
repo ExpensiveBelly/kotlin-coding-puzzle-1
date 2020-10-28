@@ -21,7 +21,7 @@ private object Solution2 {
 // Tail-recursive solution
 private object Solution3 {
     private fun product(list: List<Int>): Int {
-        fun prod(acc: Int, list: List<Int>): Int {
+        tailrec fun prod(acc: Int, list: List<Int>): Int {
             if (list.isEmpty()) {
                 return acc
             }
