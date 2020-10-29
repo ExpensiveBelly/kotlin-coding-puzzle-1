@@ -3,10 +3,12 @@ package com.igorwojda.integer.addupto
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun addUpTo(n: Int): Int {
-    TODO("not implemented")
-}
+@ExperimentalStdlibApi
+private fun addUpTo(n: Int): Int = DeepRecursiveFunction<Int, Int> { number ->
+    if (number == 0) 0 else number + callRecursive(number - 1)
+}(n)
 
+@ExperimentalStdlibApi
 class AddUpToTest {
     @Test
     fun `add up to 1`() {
