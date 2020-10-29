@@ -3,18 +3,8 @@ package com.igorwojda.list.maxsublistsum
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun maxSubListSum(list: List<Int>, n: Int): Int? {
-    TODO("not implemented")
-}
-
-private fun max(i1: Int?, i2: Int?): Int? {
-    return when {
-        i1 != null && i2 != null -> Math.max(i1, i2)
-        i1 != null && i2 == null -> i1
-        i1 == null && i2 != null -> i2
-        else -> null
-    }
-}
+private fun maxSubListSum(list: List<Int>, n: Int): Int? =
+    list.windowed(n, partialWindows = true).map { it.sum() }.maxOrNull()
 
 class MaxSubListTest {
     @Test
