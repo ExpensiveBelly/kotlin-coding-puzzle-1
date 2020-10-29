@@ -4,7 +4,9 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun formatTrainRoute(stations: List<String>): String {
-    TODO("not implemented")
+    return "Train is calling at " +
+            if (stations.size == 1) stations.first()
+            else stations.dropLast(1).joinToString() + " and " + stations.last()
 }
 
 class TrainRouteTest {
