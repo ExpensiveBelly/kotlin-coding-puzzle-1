@@ -77,8 +77,10 @@ private class SinglyLinkedList<E> {
         }
     }
 
-    fun getAt(position: Int): Node<E> {
-        return head!!
+    fun getAt(position: Int): Node<E>? {
+        var temp = head
+        repeat(position) { temp = temp?.next }
+        return temp
     }
 }
 
