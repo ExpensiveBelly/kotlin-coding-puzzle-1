@@ -6,7 +6,14 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun circularCheck(list: SinglyLinkedList<Char>): Boolean {
-    TODO("not implemented")
+    var turtle = list.head?.next
+    var hare = list.head?.next?.next
+    while (turtle?.data != hare?.data) {
+        turtle = turtle?.next
+        hare = hare?.next?.next
+        if (hare == null) return false
+    }
+    return true
 }
 
 class CircularTest {
