@@ -3,9 +3,7 @@ package com.igorwojda.integer.countdown
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun countDown(n: Int): List<Int> {
-    TODO("not implemented")
-}
+private fun countDown(n: Int): List<Int> = generateSequence(n) { it - 1}.take(n + 1).toList()
 
 class CountDownTest {
     @Test
