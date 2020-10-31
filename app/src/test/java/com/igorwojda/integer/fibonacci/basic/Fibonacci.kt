@@ -3,10 +3,12 @@ package com.igorwojda.integer.fibonacci.basic
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun fibonacci(n: Int): Int {
-    TODO("not implemented")
-}
+@ExperimentalStdlibApi
+private fun fibonacci(n: Int): Int = DeepRecursiveFunction<Int, Int> { number ->
+    if (number <= 1) number else callRecursive(number - 1) + callRecursive(number - 2)
+}(n)
 
+@ExperimentalStdlibApi
 class FibonacciSeriesTest {
     @Test
     fun `calculates correct fib value for 0`() {
