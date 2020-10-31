@@ -3,13 +3,21 @@ package com.igorwojda.integer.fibonacci.recursivecached
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun fibonacciSequenceRecursiveCached(n: Int, methodCache: MutableList<MethodCache> = mutableListOf()): Int {
-    if (n < 2) {
-        return n
-    }
-
-    return fibonacciSequenceRecursiveCached(n - 1) + fibonacciSequenceRecursiveCached(n - 2)
-}
+private fun fibonacciSequenceRecursiveCached(
+    n: Int,
+    /*methodCache: MutableList<MethodCache> = mutableListOf()*/
+    methodCache: MutableMap<Int, MethodCache> = mutableMapOf(
+        0 to MethodCache(0, 0),
+        1 to MethodCache(1, 1)
+    )
+): Int =
+    methodCache.getOrPut(n, {
+        MethodCache(
+            n,
+            fibonacciSequenceRecursiveCached(n - 1, methodCache)
+                    + fibonacciSequenceRecursiveCached(n - 2, methodCache)
+        )
+    }).result
 
 private data class MethodCache(val n: Int, val result: Int)
 
