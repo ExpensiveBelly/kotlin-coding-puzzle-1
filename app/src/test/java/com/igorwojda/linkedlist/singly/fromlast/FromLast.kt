@@ -6,7 +6,16 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun fromLast(list: SinglyLinkedList<Char>, endIndex: Int): Node<Char>? {
-    TODO("not implemented")
+    var slow = list.head
+    var fast = list.head
+    repeat(endIndex) {
+        fast = fast?.next
+    }
+    while (fast?.next != null) {
+        slow = slow?.next
+        fast = fast?.next
+    }
+    return slow
 }
 
 class FromLastTest {
