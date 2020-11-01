@@ -3,10 +3,13 @@ package com.igorwojda.integer.printnumber.steps
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun printNumber(n: Int, step: Int = 1): List<Int> {
-    TODO("not implemented")
-}
+@ExperimentalStdlibApi
+private fun printNumber(n: Int, step: Int = 1): List<Int> =
+    DeepRecursiveFunction<Int, List<Int>> { number ->
+        if (number <= 0) emptyList() else listOf(number) + callRecursive(number - step)
+    }(n)
 
+@ExperimentalStdlibApi
 class RecursivePrintNumberWithSteps {
     @Test
     fun `printNumber 0 step 1 return listOf()`() {

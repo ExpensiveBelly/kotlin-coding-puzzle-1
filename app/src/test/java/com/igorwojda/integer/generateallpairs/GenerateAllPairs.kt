@@ -3,9 +3,12 @@ package com.igorwojda.integer.generateallpairs
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun getAllPairs(n: Int): List<Pair<Int, Int>> {
-    TODO("not implemented")
-}
+private fun getAllPairs(n: Int): List<Pair<Int, Int>> =
+    (0..n).flatMap { i ->
+        (0..n).flatMap { j ->
+            listOf(i to j)
+        }
+    }
 
 class GetAllPairsTest {
     @Test

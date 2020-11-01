@@ -3,9 +3,7 @@ package com.igorwojda.integer.getodd
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun filterOdd(list: List<Int>): List<Int> {
-    TODO("not implemented")
-}
+private fun filterOdd(list: List<Int>): List<Int> = list.filter { it % 2 != 0 }
 
 class GetOddNumbersTest {
     @Test
