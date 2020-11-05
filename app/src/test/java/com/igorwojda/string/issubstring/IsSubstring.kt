@@ -3,9 +3,8 @@ package com.igorwojda.string.issubstring
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun isSubstring(str: String, subStr: String): Boolean {
-    TODO("not implemented")
-}
+private fun isSubstring(str: String, subStr: String) =
+    subStr.isNotEmpty() && str.indexOf(subStr) != -1
 
 class IsSubstringTest {
     @Test
