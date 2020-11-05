@@ -3,9 +3,7 @@ package com.igorwojda.list.countuniquevalues
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun countUniqueValues(list: List<Int>): Int {
-    TODO("not implemented")
-}
+private fun countUniqueValues(list: List<Int>): Int = list.distinct().count()
 
 class CountUniqueValuesTest {
     @Test

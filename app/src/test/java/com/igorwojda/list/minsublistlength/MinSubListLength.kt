@@ -3,18 +3,11 @@ package com.igorwojda.list.minsublistlength
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-fun minSubListLength(list: List<Int>, sum: Int): Int {
-    TODO("not implemented")
-}
-
-private fun min(i1: Int?, i2: Int?): Int? {
-    return when {
-        i1 != null && i2 != null -> Math.min(i1, i2)
-        i1 != null && i2 == null -> i1
-        i1 == null && i2 != null -> i2
-        else -> null
-    }
-}
+fun minSubListLength(list: List<Int>, sum: Int): Int =
+    list.sortedDescending().foldIndexed(0, { index: Int, element: Int, acc: Int ->
+        val partialSum = acc + element
+        if (partialSum < sum) partialSum else return index + 1
+    }).takeIf { it >= sum } ?: 0
 
 class MinSubListLengthTest {
     @Test
@@ -49,7 +42,7 @@ class MinSubListLengthTest {
 
     @Test
     fun `min sub list sum 5, 6, 4, 15, 3, 8, 4 and 31 returns 4`() {
-        minSubListLength(listOf(5, 6, 4, 15, 3, 8, 4), 31) shouldEqual 5
+        minSubListLength(listOf(5, 6, 4, 15, 3, 8, 4), 31) shouldEqual 4
     }
 
     @Test
