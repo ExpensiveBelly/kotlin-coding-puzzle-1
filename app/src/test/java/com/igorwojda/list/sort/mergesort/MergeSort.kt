@@ -3,15 +3,41 @@ package com.igorwojda.list.sort.mergesort
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
+@ExperimentalStdlibApi
 private fun mergeSort(list: List<Int>): List<Int> {
-    // Take two sorted lists and merge them together into one sorted list
-    fun merge(left: MutableList<Int>, right: MutableList<Int>): MutableList<Int> {
-        TODO("not implemented")
-    }
+    fun merge(left: List<Int>, right: List<Int>): List<Int> =
+        DeepRecursiveFunction<Pair<List<Int>, List<Int>>, List<Int>> { (leftList, rightList) ->
+            when {
+                leftList.isNotEmpty() && rightList.isNotEmpty() -> {
+                    when {
+                        leftList.first() <= rightList.first() -> listOf(leftList.first()) + callRecursive(
+                            leftList.drop(1) to rightList
+                        )
+                        else -> listOf(rightList.first()) + callRecursive(
+                            leftList to rightList.drop(1)
+                        )
+                    }
+                }
+                leftList.isNotEmpty() -> leftList
+                rightList.isNotEmpty() -> rightList
+                else -> emptyList()
+            }
 
-    TODO("not implemented")
+        }(left to right)
+
+    return DeepRecursiveFunction<List<Int>, List<Int>> { elements ->
+        val mid = elements.size / 2
+        when {
+            elements.size <= 1 -> elements
+            else -> merge(
+                callRecursive(elements.subList(0, mid)),
+                callRecursive(elements.subList(mid, elements.size))
+            )
+        }
+    }(list)
 }
 
+@ExperimentalStdlibApi
 class MergeSortTest {
     @Test
     fun `merge sort empty list`() {
