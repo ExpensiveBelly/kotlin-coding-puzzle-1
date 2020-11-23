@@ -1,5 +1,8 @@
 package com.igorwojda.list.sort.radixsort
 
+import kotlin.math.abs
+import kotlin.math.log10
+
 // Time complexity (Best): Ω(n^2)
 // Time complexity (Average): Θ(n^2)
 // Time complexity (Worst): O(n^2)
@@ -45,7 +48,7 @@ private object Solution {
     private val Int.digitCount: Int
         get() = when (this) {
             0 -> 1
-            else -> Math.log10(Math.abs(this.toDouble())).toInt() + 1
+            else -> log10(abs(this.toDouble())).toInt() + 1
         }
 
     private fun maxDigits(list: List<Int>) = list.map { it.digitCount }.max() ?: 0
