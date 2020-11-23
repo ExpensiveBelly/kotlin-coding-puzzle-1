@@ -8,30 +8,34 @@ import kotlin.math.pow
 private fun radixSort(list: List<Int>): List<Number> {
     val nonEmptyList = list.toNel() ?: return list
     val maxDigits = maxDigits(nonEmptyList)
-    repeat(maxDigits) { digit ->
-        nonEmptyList.toIntArray().countingSort()
+    var originalList = nonEmptyList.toIntArray()
+    repeat(maxDigits) { index ->
+        originalList = originalList.countingSort(index)
     }
 
-    return list
+    return originalList.toList()
 }
 
-private fun IntArray.countingSort(): IntArray {
+private fun IntArray.countingSort(index: Int = 0): IntArray {
     if (isEmpty()) return this
-    val min = minOrNull()!!
-    val count = IntArray(maxOrNull()!! - min + 1)
-    forEach { count[it - min]++ }
+    val digitFromNumber: (Int) -> Int = { it.getIntDigitAt(index) }
+    val min = map { digitFromNumber(it) }.minOrNull()!!
+    val max = map { digitFromNumber(it) }.maxOrNull()!!
+    val count = IntArray(max - min + 1)
+    forEach { count[digitFromNumber(it) - min]++ }
     for (i in 1 until count.size) {
         count[i] += count[i - 1]
     }
     val output = IntArray(size)
-    forEach {
-        output[count[it - min] - 1] = it
-        count[it - min]--
+    for (i in size - 1 downTo 0) {
+        output[count[digitFromNumber(get(i)) - min] - 1] = get(i)
+        count[digitFromNumber(get(i)) - min]--
     }
     return output
 }
 
-private fun Int.getDigitAt(index: Int): Char = div(10.toDouble().pow(index).toInt()).rem(10).toChar() + '0'.toInt()
+private fun Int.getIntDigitAt(index: Int): Int = div(10.toDouble().pow(index).toInt()).rem(10)
+private fun Int.getDigitAt(index: Int): Char = getIntDigitAt(index).toChar() + '0'.toInt()
 private val Int.digitCount get() = toString().count()
 private fun maxDigits(list: List<Int>): Int = list.maxOrNull()?.toString()?.length ?: 0
 
@@ -39,6 +43,11 @@ class RadixSortTest {
     @Test
     fun `getDigitAt at 0 for 123 is 1`() {
         123.getDigitAt(0) shouldEqual '3'
+    }
+
+    @Test
+    fun `getIntDigitAt at 4 for 123 is 0`() {
+        123.getIntDigitAt(4) shouldEqual 0
     }
 
     @Test
