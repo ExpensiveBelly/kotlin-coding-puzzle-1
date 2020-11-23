@@ -1,19 +1,39 @@
 package com.igorwojda.list.sort.radixsort
 
+import com.github.fsbarata.functional.data.list.toNel
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import kotlin.math.pow
 
 private fun radixSort(list: List<Int>): List<Number> {
-    TODO("not implemented")
+    val nonEmptyList = list.toNel() ?: return list
+    val maxDigits = maxDigits(nonEmptyList)
+    repeat(maxDigits) { digit ->
+        nonEmptyList.toIntArray().countingSort()
+    }
+
+    return list
 }
 
-private fun Int.getDigitAt(index: Int): Char {
-    return '0'
+private fun IntArray.countingSort(): IntArray {
+    if (isEmpty()) return this
+    val min = minOrNull()!!
+    val count = IntArray(maxOrNull()!! - min + 1)
+    forEach { count[it - min]++ }
+    for (i in 1 until count.size) {
+        count[i] += count[i - 1]
+    }
+    val output = IntArray(size)
+    forEach {
+        output[count[it - min] - 1] = it
+        count[it - min]--
+    }
+    return output
 }
 
-private val Int.digitCount get() = -1
-
-private fun maxDigits(list: List<Int>): Int = -1
+private fun Int.getDigitAt(index: Int): Char = div(10.toDouble().pow(index).toInt()).rem(10).toChar() + '0'.toInt()
+private val Int.digitCount get() = toString().count()
+private fun maxDigits(list: List<Int>): Int = list.maxOrNull()?.toString()?.length ?: 0
 
 class RadixSortTest {
     @Test
@@ -94,6 +114,11 @@ class RadixSortTest {
     @Test
     fun `radix sort 5, 1, 4, 2`() {
         radixSort(mutableListOf(5, 1, 4, 2)) shouldEqual listOf(1, 2, 4, 5)
+    }
+
+    @Test
+    fun `counting sort 5, 1, 4, 2`() {
+        intArrayOf(5, 1, 4, 2).countingSort().toList() shouldEqual listOf(1, 2, 4, 5)
     }
 
     @Test
