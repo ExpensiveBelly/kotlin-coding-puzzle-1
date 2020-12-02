@@ -2,9 +2,14 @@ package com.igorwojda.list.sort.bubblesort
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import java.util.Collections.swap
 
-private fun bubbleSort(list: List<Int>): List<Number> {
-    TODO("not implemented")
+private fun bubbleSort(list: List<Int>): List<Number> = list.apply {
+    (size downTo 1).forEach { i ->
+        (1 until i).forEach { j ->
+            if (get(j) < get(j - 1)) swap(this, j, j - 1)
+        }
+    }
 }
 
 class BubbleSortTest {
