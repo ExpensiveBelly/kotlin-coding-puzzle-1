@@ -2,9 +2,16 @@ package com.igorwojda.list.sort.selectionsort
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import java.util.*
 
-private fun selectionSort(list: List<Int>): List<Number> {
-    return list
+private fun selectionSort(list: List<Int>): List<Number> = list.apply {
+    for (i in 0 until size - 1) {
+        var minimum = get(i) to i
+        for (j in (i + 1) until size) {
+            if (get(j) < minimum.first) minimum = get(j) to j
+        }
+        Collections.swap(this, i, minimum.second)
+    }
 }
 
 class SelectionSortTest {

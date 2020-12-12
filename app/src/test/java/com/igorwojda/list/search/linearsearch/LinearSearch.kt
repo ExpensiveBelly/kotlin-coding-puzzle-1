@@ -3,9 +3,10 @@ package com.igorwojda.list.search.linearsearch
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun getIndex(list: List<String>, str: String): Int {
-    TODO("not implemented")
-}
+private fun getIndex(list: List<String>, str: String): Int =
+    list.foldIndexed(-1) { index: Int, acc: Int, s: String ->
+        if (s.contains(str)) return index else acc
+    }
 
 class LinearSearchTest {
     @Test
