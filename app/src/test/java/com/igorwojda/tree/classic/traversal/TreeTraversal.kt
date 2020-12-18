@@ -2,6 +2,7 @@ package com.igorwojda.tree.classic.traversal
 
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
+import kotlin.math.max
 
 private class BinarySearchTree<E : Comparable<E>> {
     var root: BinaryNode<E>? = null
@@ -63,32 +64,82 @@ private class BinarySearchTree<E : Comparable<E>> {
     fun isEmpty() = root == null
 
     fun traverseBreathFirst(): List<E> {
-        TODO("not implemented")
+        val list: MutableList<E> = mutableListOf()
+        val height: Int = height(root)
+        return if (height == 0) emptyList()
+        else {
+            for (i in 1..height) {
+                printLevel(i, root!!, list)
+            }
+            list
+        }
     }
 
-    fun traverseDepthFirstPreOrder(): List<E> {
-        TODO("not implemented")
+    private fun printLevel(level: Int, node: BinaryNode<E>, mutableList: MutableList<E>) {
+        if (level == 1) mutableList.add(node.data)
+        else {
+            node.left?.let { printLevel(level - 1, it, mutableList) }
+            node.right?.let { printLevel(level - 1, it, mutableList) }
+        }
     }
 
-    fun traverseDepthFirstInOrder(): List<E> {
-        TODO("not implemented")
+    private fun height(node: BinaryNode<E>?): Int {
+        if (node == null) return 0
+        val leftHeight = 1 + (node.left?.let { height(it) } ?: 0)
+        val rightHeight = 1 + (node.right?.let { height(it) } ?: 0)
+
+        return max(leftHeight, rightHeight)
     }
 
-    fun traverseDepthFirstPostOrder(): List<E> {
-        TODO("not implemented")
-    }
 
-    fun traverseDepthFirstPreOrderReversed(): List<E> {
-        TODO("not implemented")
-    }
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstPreOrder(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                listOf(node.data) + callRecursive(node.left) + callRecursive(node.right)
+            } ?: emptyList()
+        }(root)
 
-    fun traverseDepthFirstInOrderReversed(): List<E> {
-        TODO("not implemented")
-    }
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstInOrder(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                callRecursive(node.left) + node.data + callRecursive(node.right)
+            } ?: emptyList()
+        }(root)
 
-    fun traverseDepthFirstPostOrderReverse(): List<E> {
-        TODO("not implemented")
-    }
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstPostOrder(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                callRecursive(node.left) + callRecursive(node.right) + node.data
+            } ?: emptyList()
+        }(root)
+
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstPreOrderReversed(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                listOf(node.data) + callRecursive(node.right) + callRecursive(node.left)
+            } ?: emptyList()
+        }(root)
+
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstInOrderReversed(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                callRecursive(node.right) + node.data + callRecursive(node.left)
+            } ?: emptyList()
+        }(root)
+
+    @ExperimentalStdlibApi
+    fun traverseDepthFirstPostOrderReverse(): List<E> =
+        DeepRecursiveFunction<BinaryNode<E>?, List<E>> { binaryNode ->
+            binaryNode?.let { node ->
+                callRecursive(node.right) + callRecursive(node.left) + node.data
+            } ?: emptyList()
+        }(root)
+
 }
 
 private data class BinaryNode<E : Comparable<E>>(
@@ -120,6 +171,7 @@ private class Queue<E> {
     val size get() = list.size
 }
 
+@ExperimentalStdlibApi
 class TreeTest {
     @Test
     fun `traverse breath first`() {
