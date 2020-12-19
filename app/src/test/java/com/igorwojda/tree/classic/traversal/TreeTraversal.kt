@@ -63,25 +63,19 @@ private class BinarySearchTree<E : Comparable<E>> {
 
     fun isEmpty() = root == null
 
-    fun traverseBreathFirst(): List<E> {
-        val list: MutableList<E> = mutableListOf()
-        val height: Int = height(root)
-        return if (height == 0) emptyList()
-        else {
-            for (i in 1..height) {
-                printLevel(i, root!!, list)
-            }
-            list
-        }
-    }
+    @ExperimentalStdlibApi
+    fun traverseBreathFirst(): List<E> = (0..height(root)).map { root.nodes(it) }.flatten()
 
-    private fun printLevel(level: Int, node: BinaryNode<E>, mutableList: MutableList<E>) {
-        if (level == 1) mutableList.add(node.data)
-        else {
-            node.left?.let { printLevel(level - 1, it, mutableList) }
-            node.right?.let { printLevel(level - 1, it, mutableList) }
-        }
-    }
+    @ExperimentalStdlibApi
+    private fun BinaryNode<E>?.nodes(level: Int): List<E> =
+        DeepRecursiveFunction<Pair<BinaryNode<E>?, Int>, List<E>> { (node, level) ->
+            when {
+                node == null -> emptyList()
+                level == 0 -> listOf(node.data)
+                else -> node.left.nodes(level - 1) + node.right.nodes(level - 1)
+            }
+        }(this to level)
+
 
     private fun height(node: BinaryNode<E>?): Int {
         if (node == null) return 0
