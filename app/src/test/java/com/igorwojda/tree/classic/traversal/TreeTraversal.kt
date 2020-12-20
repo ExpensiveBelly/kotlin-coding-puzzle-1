@@ -77,13 +77,12 @@ private class BinarySearchTree<E : Comparable<E>> {
         }(this to level)
 
 
-    private fun height(node: BinaryNode<E>?): Int {
-        if (node == null) return 0
-        val leftHeight = 1 + (node.left?.let { height(it) } ?: 0)
-        val rightHeight = 1 + (node.right?.let { height(it) } ?: 0)
-
-        return max(leftHeight, rightHeight)
-    }
+    @ExperimentalStdlibApi
+    private fun height(node: BinaryNode<E>?): Int =
+        DeepRecursiveFunction<BinaryNode<E>?, Int> { binaryNode ->
+            if (binaryNode == null) 0
+            else 1 + max(callRecursive(binaryNode.left), callRecursive(binaryNode.right))
+        }(node)
 
 
     @ExperimentalStdlibApi
