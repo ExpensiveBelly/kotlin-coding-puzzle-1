@@ -8,16 +8,27 @@ private class BinarySearchTree<E : Comparable<E>> {
         private set
 
     fun add(element: E) {
-        TODO("not implemented")
+        if (!contains(element)) root = add(root, element)
     }
 
-    fun contains(element: E): Boolean {
-        TODO("not implemented")
+    private fun add(node: BinaryNode<E>?, element: E): BinaryNode<E> = when {
+        node == null -> BinaryNode(element, null, null)
+        element < node.data -> node.copy(left = add(node.left, element))
+        element > node.data -> node.copy(right = add(node.right, element))
+        else -> node
     }
 
-    fun isEmpty(): Boolean {
-        TODO("not implemented")
+    fun contains(element: E): Boolean = contains(root, element)
+
+    private fun contains(node: BinaryNode<E>?, element: E): Boolean = when {
+        node == null -> false
+        node.data == element -> true
+        element < node.data -> contains(node.left, element)
+        element > node.data -> contains(node.right, element)
+        else -> false
     }
+
+    fun isEmpty(): Boolean = root == null
 }
 
 private data class BinaryNode<E : Comparable<E>>(
