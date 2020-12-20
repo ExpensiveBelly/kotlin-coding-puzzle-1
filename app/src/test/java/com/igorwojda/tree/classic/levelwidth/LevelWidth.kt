@@ -3,9 +3,11 @@ package com.igorwojda.tree.classic.levelwidth
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun levelWidth(tree: Node): List<Int> {
-    TODO("not implemented")
-}
+private fun levelWidth(tree: Node): List<Int> = listOf(1) + levelWidth(tree.children)
+
+private tailrec fun levelWidth(node: List<Node>, acc: List<Int> = emptyList()): List<Int> =
+    if (node.isEmpty()) acc
+    else levelWidth(node.map { it.children }.flatten(), acc + listOf(node.size))
 
 class LevelWidthTest {
     @Test
