@@ -7,20 +7,25 @@ private class BinarySearchTree<E : Comparable<E>> {
     var root: BinaryNode<E>? = null
         private set
 
+    @ExperimentalStdlibApi
     fun add(element: E) {
         if (!contains(element)) root = add(root, element)
     }
 
-    private fun add(node: BinaryNode<E>?, element: E): BinaryNode<E> = when {
-        node == null -> BinaryNode(element, null, null)
-        element < node.data -> node.copy(left = add(node.left, element))
-        element > node.data -> node.copy(right = add(node.right, element))
-        else -> node
-    }
+    @ExperimentalStdlibApi
+    private fun add(node: BinaryNode<E>?, element: E): BinaryNode<E> =
+        DeepRecursiveFunction<Pair<BinaryNode<E>?, E>, BinaryNode<E>> { (node, element) ->
+            when {
+                node == null -> BinaryNode(element, null, null)
+                element < node.data -> node.copy(left = callRecursive(node.left to element))
+                element > node.data -> node.copy(right = callRecursive(node.right to element))
+                else -> node
+            }
+        }(node to element)
 
     fun contains(element: E): Boolean = contains(root, element)
 
-    private fun contains(node: BinaryNode<E>?, element: E): Boolean = when {
+    private tailrec fun contains(node: BinaryNode<E>?, element: E): Boolean = when {
         node == null -> false
         node.data == element -> true
         element < node.data -> contains(node.left, element)
@@ -37,6 +42,7 @@ private data class BinaryNode<E : Comparable<E>>(
     var right: BinaryNode<E>? = null
 )
 
+@ExperimentalStdlibApi
 class BinarySearchTreeTest {
     @Test
     fun `build valid binary search tree`() {
