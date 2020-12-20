@@ -22,7 +22,6 @@ private fun mergeSort(list: List<Int>): List<Int> {
                 rightList.isNotEmpty() -> rightList
                 else -> emptyList()
             }
-
         }(left to right)
 
     return DeepRecursiveFunction<List<Int>, List<Int>> { elements ->

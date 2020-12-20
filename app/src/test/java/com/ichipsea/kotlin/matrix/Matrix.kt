@@ -115,7 +115,7 @@ private inline fun <T> prepareListForMatrix(cols: Int, rows: Int, init: (Int, In
     val list = ArrayList<T>(cols * rows)
     for (y in 0 until rows) {
         for (x in 0 until cols) {
-            list.add(init(y, x)) //Modified to avoid transposing the matrix
+            list.add(init(y, x)) // Modified to avoid transposing the matrix
         }
     }
     return list

@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import java.util.*
 
-//private class Stack<E> {
+// private class Stack<E> {
 //    var elements: List<E> = emptyList()
 //    val size
 //        get() = elements.size
@@ -24,7 +24,7 @@ import java.util.*
 //    fun isEmpty(): Boolean {
 //        return elements.isEmpty()
 //    }
-//}
+// }
 
 private class Stack<E> {
     private var elements: LinkedList<E> = LinkedList()

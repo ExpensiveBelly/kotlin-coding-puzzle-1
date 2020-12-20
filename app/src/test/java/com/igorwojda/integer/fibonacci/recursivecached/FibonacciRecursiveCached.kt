@@ -14,8 +14,10 @@ private fun fibonacciSequenceRecursiveCached(
     methodCache.getOrPut(n, {
         MethodCache(
             n,
-            fibonacciSequenceRecursiveCached(n - 1, methodCache)
-                    + fibonacciSequenceRecursiveCached(n - 2, methodCache)
+            fibonacciSequenceRecursiveCached(n - 1, methodCache) + fibonacciSequenceRecursiveCached(
+                n - 2,
+                methodCache
+            )
         )
     }).result
 

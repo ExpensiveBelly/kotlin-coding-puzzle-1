@@ -4,8 +4,11 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun isAnagram(str1: String, str2: String): Boolean {
-    return str1.toLowerCase().toCharArray().toTypedArray().mapNotNull { if (it.isLetter()) it else null }.all { str2.toLowerCase().indexOf(it) != -1 }
-            && str1.trim().toCharArray().toTypedArray().filter { it.isLetter() }.joinToString("").length == str2.trim().toCharArray().toTypedArray().filter { it.isLetter() }.joinToString("").length
+    return str1.toLowerCase().toCharArray().toTypedArray()
+        .mapNotNull { if (it.isLetter()) it else null }
+        .all { str2.toLowerCase().indexOf(it) != -1 } && str1.trim().toCharArray().toTypedArray()
+        .filter { it.isLetter() }.joinToString("").length == str2.trim().toCharArray()
+        .toTypedArray().filter { it.isLetter() }.joinToString("").length
 }
 
 class AnagramTest {

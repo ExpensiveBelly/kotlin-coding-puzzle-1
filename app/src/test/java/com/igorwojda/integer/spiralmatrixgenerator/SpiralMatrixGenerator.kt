@@ -20,10 +20,10 @@ fun spiral(matrix: MutableMatrix<Int>, initialCount: Int, start: Int, end: Int):
     if (start > end) matrix
     else {
         var count = initialCount
-        (start until end + 1).forEach { index -> run { matrix[start, index] = ++count }.also { println(" 1 matrix[$start, $index] = $count")} }
-        (start + 1 until end + 1).forEach { index -> run { matrix[index, end] = ++count }.also { println("2 matrix[$index, $end] = $count")} }
-        (end - 1 downTo start).forEach { index -> run {  matrix[end, index] = ++count }.also { println("3 matrix[$end, $index] = $count")} }
-        (end - 1 downTo start + 1).forEach { index -> run {matrix[index, start] = ++count }.also { println("4 matrix[$index, $start] = $count")} }
+        (start until end + 1).forEach { index -> run { matrix[start, index] = ++count }.also { println(" 1 matrix[$start, $index] = $count") } }
+        (start + 1 until end + 1).forEach { index -> run { matrix[index, end] = ++count }.also { println("2 matrix[$index, $end] = $count") } }
+        (end - 1 downTo start).forEach { index -> run { matrix[end, index] = ++count }.also { println("3 matrix[$end, $index] = $count") } }
+        (end - 1 downTo start + 1).forEach { index -> run { matrix[index, start] = ++count }.also { println("4 matrix[$index, $start] = $count") } }
 
         spiral(matrix, count, start + 1, end - 1)
     }

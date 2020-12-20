@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 import java.util.*
 
-//private class Queue<E> {
+// private class Queue<E> {
 //    var size = 0
 //        private set
 //        get() = elements.size
@@ -22,9 +22,9 @@ import java.util.*
 //    fun isEmpty(): Boolean {
 //        return elements.isEmpty()
 //    }
-//}
+// }
 
-//private class Queue<E> {
+// private class Queue<E> {
 //    var size = 0
 //        private set
 //        get() = elements.size
@@ -42,7 +42,7 @@ import java.util.*
 //    fun isEmpty(): Boolean {
 //        return elements.isEmpty()
 //    }
-//}
+// }
 
 private class Queue<E> {
     var size = 0

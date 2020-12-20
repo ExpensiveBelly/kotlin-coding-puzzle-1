@@ -76,14 +76,12 @@ private class BinarySearchTree<E : Comparable<E>> {
             }
         }(this to level)
 
-
     @ExperimentalStdlibApi
     private fun height(node: BinaryNode<E>?): Int =
         DeepRecursiveFunction<BinaryNode<E>?, Int> { binaryNode ->
             if (binaryNode == null) 0
             else 1 + max(callRecursive(binaryNode.left), callRecursive(binaryNode.right))
         }(node)
-
 
     @ExperimentalStdlibApi
     fun traverseDepthFirstPreOrder(): List<E> =
@@ -132,7 +130,6 @@ private class BinarySearchTree<E : Comparable<E>> {
                 callRecursive(node.right) + callRecursive(node.left) + node.data
             } ?: emptyList()
         }(root)
-
 }
 
 private data class BinaryNode<E : Comparable<E>>(

@@ -3,7 +3,7 @@ package com.igorwojda.integer.countupanddown
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun countUpAndDown(n: Int): List<Int> = (0 .. n) + (n - 1 downTo 0)
+private fun countUpAndDown(n: Int): List<Int> = (0..n) + (n - 1 downTo 0)
 
 class CountUpAndDownTest {
     @Test

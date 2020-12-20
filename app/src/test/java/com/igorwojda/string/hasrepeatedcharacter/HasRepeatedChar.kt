@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
 private fun hasRepeatedChar(str: String): Boolean {
-   return str.groupingBy { it }.eachCount().count { it.value > 1 } > 0
+    return str.groupingBy { it }.eachCount().count { it.value > 1 } > 0
 }
 
 class RepeatedCharacterTest {

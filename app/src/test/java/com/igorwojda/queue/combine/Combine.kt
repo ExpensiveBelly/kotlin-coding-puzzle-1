@@ -21,7 +21,6 @@ private fun combine(q1: Queue<*>, q2: Queue<*>): Queue<*> {
     return queue
 }
 
-
 private class Queue<E> {
     private val list = mutableListOf<E>()
 

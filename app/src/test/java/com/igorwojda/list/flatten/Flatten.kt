@@ -10,7 +10,7 @@ fun flatten(list: List<*>): List<*> {
             else -> listOf(it)
         }
     }
- }
+}
 
 class FlattenTest {
     @Test

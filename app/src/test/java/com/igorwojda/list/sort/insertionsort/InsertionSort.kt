@@ -3,7 +3,7 @@ package com.igorwojda.list.sort.insertionsort
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private fun insertionSort(list: MutableList<Int>) = list.fold(list.toList()) { acc, element->
+private fun insertionSort(list: MutableList<Int>) = list.fold(list.toList()) { acc, element ->
     val (firstHalf, secondHalf) = acc.partition { it < element }
     firstHalf + secondHalf
 }
