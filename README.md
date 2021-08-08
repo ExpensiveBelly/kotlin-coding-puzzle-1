@@ -1,140 +1,159 @@
-# Kotlin coding puzzles
+# Kotlin coding challenges
 
-This repository contains a set of [programming puzzles](#lets-solve-some-puzzles) that are solved using the
+This repository contains a set of [programming challenges](#lets-solve-some-challenges) that are solved using the
 [Kotlin](https://kotlinlang.org/) language (hints, solutions tests and [useful links](#useful-links) are here as well).
-The purpose of this repository is to help you to practice coding and develop strong problem-solving skills. This will help
-you to become a better programmer and improve your chance of getting a new job by passing
+The purpose of this repository is to help you to practice coding and develop strong problem-solving skills. This will
+help you to become a better programmer and improve your chance of getting a new job by passing
 [whiteboard coding](https://www.quora.com/What-is-whiteboard-coding) interviews.
 
-## Puzzle structure
+## Challenge structure
 
-Each puzzle is located in separate package and it contains 3 main files ([screen](./misc/image/SampleTask.png)):
-- `Puzzle.md` - the task description.
-- `Puzzle.kt` - an empty method/class where puzzle should be solved. This file also contains helper methods and a set of
+Each challenge is located in separate package and it contains 3 main
+files ([screen](./misc/image/challenge-structure.png)):
+
+- `desc.md` - the task description.
+- `desc.kt` - an empty method/class where challenge should be solved. This file also contains set of test and
+  ocasionally helper methods.
   [JUnit](https://junit.org/junit4/) tests which verify that task was solved correctly.
-- `PuzzleSolution.kt` - a file containing one or more solutions.
+- `solution.kt` - a file containing one or more solutions.
 
-Keep in mind that each puzzle will usually have more than one solution. Even simple puzzles like
-[String reversal](app/src/test/java/com/igorwojda/string/reverse/Reverse.md) can be solved in
+Keep in mind that each challenge will usually have more than one solution. Even simple challenges like
+[String reversal](src/test/kotlin/com/igorwojda/string/reverse/desc.md) can be solved in
 [10 different ways](https://eddmann.com/posts/ten-ways-to-reverse-a-string-in-javascript/). Usually, we compare various
 solutions using
 ([Big O notation](https://medium.com/karuna-sehgal/a-simplified-explanation-of-the-big-o-notation-82523585e835)) to
 determine space/time complexity and we look at code readability.
 
 ## How do I start?
-1. [Checkout and open the project](https://github.com/igorwojda/kotlin-coding-puzzle/wiki/Checkout-and-open-the-project) 
-2. [Solve the puzzle](https://github.com/igorwojda/kotlin-coding-puzzle/wiki/Solving-coding-chalenges)
-3. [Run the tests](https://github.com/igorwojda/kotlin-coding-puzzle/wiki/Running-tests)
 
-# Let's solve some puzzles
+1. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+2. Import project by using IntelliJ IDEA menu: `File | New | Project From Version Control | Git`
+3. Choose a challenge and code
+   the [solution](https://github.com/igorwojda/kotlin-coding-challenges/wiki/Solving-coding-chalenges)
+4. [Run the tests](https://github.com/igorwojda/kotlin-coding-challenges/wiki/Running-tests) to verify your solution
 
-Puzzles below are segregated by different difficulties. The repository also contains puzzles grouped by
-[problem type](misc/PuzzleGroups.md) and [problem add order](misc/PuzzleOrder.md).
+# Let's solve some challenges
 
-Some puzzles may contain a reference to other puzzles that should be solved before to have a better understanding of the
-problem. To succeed you need to practice often, repeat the same puzzles multiple times and be persistent over time. Take
-your time before you take a look at the presented solution. **Good luck!**
+Challenges below are segregated by different difficulties. The repository also contains challenges grouped by
+[problem type](misc/desc.md).
+
+Some challenges may contain a reference to other challenges that should be solved before to have a better understanding
+of the problem. To succeed you need to practice often, repeat the same challenges multiple times and be persistent over
+time. Take your time before you take a look at the presented solution. **Good luck!**
 
 **New in Town**
-- [Capitalize sentence](app/src/test/java/com/igorwojda/string/capitalizesentence/CapitalizeSentence.md)
-- [Get odd numbers](app/src/test/java/com/igorwojda/integer/getodd/GetOdd.md)
-- [Range contains range?](app/src/test/java/com/igorwojda/range/containsrange/ContainsRange.md)
-- [Add up to](app/src/test/java/com/igorwojda/integer/addupto/AddUpTo.md)
-- [Linear search](app/src/test/java/com/igorwojda/list/search/linearsearch/LinearSearch.md)
-- [Count down](app/src/test/java/com/igorwojda/integer/countdown/CountDown.md)
-- [Count up and down](app/src/test/java/com/igorwojda/integer/countupanddown/CountUpAndDown.md)
-- [Format train route](app/src/test/java/com/igorwojda/list/formattrainroute/FormatTrainRoute.md)
-- [Generate all pairs](app/src/test/java/com/igorwojda/integer/generateallpairs/GenerateAllPairs.md)
-- [Count unique values](app/src/test/java/com/igorwojda/list/countuniquevalues/CountUniqueValues.md)
-- [Print number](app/src/test/java/com/igorwojda/integer/printnumber/basic/PrintNumber.md)
-- [Print number with steps](app/src/test/java/com/igorwojda/integer/printnumber/steps/PrintNumberWithSteps.md)
-- [Power](app/src/test/java/com/igorwojda/integer/power/Power.md)
-- [Factorial](app/src/test/java/com/igorwojda/integer/factorial/Factorial.md)
-- [Product](app/src/test/java/com/igorwojda/list/product/Product.md)
-- [Capitalize first](app/src/test/java/com/igorwojda/list/capitalizeFirst/CapitalizeFirst.md)
-- [Decapitalize const](app/src/test/java/com/igorwojda/string/decapitalizeconst/DecapitalizeConst.md)
-- [Longest word](app/src/test/java/com/igorwojda/string/longestword/LongestWord.md)
+
+- [Capitalize sentence](src/test/kotlin/com/igorwojda/string/capitalizesentence/desc.md)
+- [Get odd numbers](src/test/kotlin/com/igorwojda/integer/getodd/desc.md)
+- [Range contains range?](src/test/kotlin/com/igorwojda/range/containsrange/desc.md)
+- [Add up to](src/test/kotlin/com/igorwojda/integer/addupto/desc.md)
+- [Linear search](src/test/kotlin/com/igorwojda/list/search/linearsearch/desc.md)
+- [Count down](src/test/kotlin/com/igorwojda/integer/countdown/desc.md)
+- [Count up and down](src/test/kotlin/com/igorwojda/integer/countupanddown/desc.md)
+- [Format train route](src/test/kotlin/com/igorwojda/list/formattrainroute/desc.md)
+- [Generate all pairs](src/test/kotlin/com/igorwojda/integer/generateallpairs/desc.md)
+- [Count unique values](src/test/kotlin/com/igorwojda/list/countuniquevalues/desc.md)
+- [Print number](src/test/kotlin/com/igorwojda/integer/printnumber/basic/desc.md)
+- [Print number with steps](src/test/kotlin/com/igorwojda/integer/printnumber/steps/desc.md)
+- [Power](src/test/kotlin/com/igorwojda/integer/power/desc.md)
+- [Factorial](src/test/kotlin/com/igorwojda/integer/factorial/desc.md)
+- [Product](src/test/kotlin/com/igorwojda/list/product/desc.md)
+- [Capitalize first](src/test/kotlin/com/igorwojda/list/capitalizeFirst/desc.md)
+- [Decapitalize const](src/test/kotlin/com/igorwojda/string/decapitalizeconst/desc.md)
+- [Longest word](src/test/kotlin/com/igorwojda/string/longestword/desc.md)
 
 **Apprentice**
-- [Is palindrome](app/src/test/java/com/igorwojda/string/ispalindrome/basic/IsPalindrome.md)
-- [Is tolerant palindrome](app/src/test/java/com/igorwojda/string/ispalindrome/tolerant/IsTolerantPalindrome.md)
-- [Is anagram](app/src/test/java/com/igorwojda/string/isanagram/IsAnagram.md)
-- [Max occurring char](app/src/test/java/com/igorwojda/string/maxchar/MaxOccurrentChar.md)
-- [String reverse](app/src/test/java/com/igorwojda/string/reverse/Reverse.md)
-- [Find the vowels](app/src/test/java/com/igorwojda/string/vowels/Vowels.md)
-- [Int reverse](app/src/test/java/com/igorwojda/integer/reverse/Reverse.md)
-- [Pyramid generator](app/src/test/java/com/igorwojda/integer/pyramidgenerator/PyramidGenerator.md)
-- [Steps generator](app/src/test/java/com/igorwojda/integer/stepsgenerator/StepsGenerator.md)
-- [Fizz Buzz](app/src/test/java/com/igorwojda/integer/fizzbuzz/FizzBuzz.md)
-- [Caesar Cipher](app/src/test/java/com/igorwojda/string/caesarcipher/CaesarCipher.md)
-- [Has repeated char](app/src/test/java/com/igorwojda/string/hasrepeatedcharacter/HasRepeatedChar.md)
+
+- [Is palindrome](src/test/kotlin/com/igorwojda/string/ispalindrome/basic/desc.md)
+- [Is tolerant palindrome](src/test/kotlin/com/igorwojda/string/ispalindrome/tolerant/desc.md)
+- [Is permutation palindrome](src/test/kotlin/com/igorwojda/string/ispalindrome/permutation/desc.md)
+- [Is anagram](src/test/kotlin/com/igorwojda/string/isanagram/desc.md)
+- [Max occurring char](src/test/kotlin/com/igorwojda/string/maxchar/desc.md)
+- [String reverse](src/test/kotlin/com/igorwojda/string/reverse/desc.md)
+- [Find the vowels](src/test/kotlin/com/igorwojda/string/vowels/desc.md)
+- [Int reverse](src/test/kotlin/com/igorwojda/integer/reverse/desc.md)
+- [Pyramid generator](src/test/kotlin/com/igorwojda/integer/pyramidgenerator/desc.md)
+- [Steps generator](src/test/kotlin/com/igorwojda/integer/stepsgenerator/desc.md)
+- [Fizz Buzz](src/test/kotlin/com/igorwojda/integer/fizzbuzz/desc.md)
+- [Caesar Cipher](src/test/kotlin/com/igorwojda/string/caesarcipher/desc.md)
+- [Has repeated char](src/test/kotlin/com/igorwojda/string/hasrepeatedcharacter/desc.md)
+- [Has repeated char](src/test/kotlin/com/igorwojda/string/hasrepeatedcharacter/desc.md)
 
 **Warrior** 
-- [Spiral matrix generator](app/src/test/java/com/igorwojda/integer/spiralmatrixgenerator/SpiralMatrixGenerator.md)
-- [Queue](app/src/test/java/com/igorwojda/queue/basic/Queue.md)
-- [Combine queues](app/src/test/java/com/igorwojda/queue/combine/Combine.md)
-- [Stack](app/src/test/java/com/igorwojda/stack/basic/Stack.md)
-- [Bubble sort](app/src/test/java/com/igorwojda/list/sort/bubblesort/BubbleSort.md)
-- [Selection sort](app/src/test/java/com/igorwojda/list/sort/selectionsort/SelectionSort.md)
-- [Square equals](app/src/test/java/com/igorwojda/list/squareequal/SquareEquals.md)
-- [Sum zero](app/src/test/java/com/igorwojda/list/sumzero/SumZero.md)
-- [Digit frequency](app/src/test/java/com/igorwojda/integer/digitfrequency/DigitFrequency.md)
-- [Get duplicated arguments](app/src/test/java/com/igorwojda/string/getduplicatedarguments/GetDuplicatedArguments.md)
-- [Find pair with target average](app/src/test/java/com/igorwojda/list/pairaverage/PairAverage.md)
-- [Binary search tree](app/src/test/java/com/igorwojda/tree/binarysearchtree/BinarySearchTree.md)
-- [Tree traversal](app/src/test/java/com/igorwojda/tree/classic/traversal/TreeTraversal.md)
-- [Tree level width](app/src/test/java/com/igorwojda/tree/classic/levelwidth/LevelWidth.md)
-- [Binary search tree (insert)](app/src/test/java/com/igorwojda/binarytree/insert/Insert.md)
-- [Binary search tree (validate)](app/src/test/java/com/igorwojda/binarytree/validate/Validate.md)
-- [Any callback](app/src/test/java/com/igorwojda/various/anycallback/AnyCallback.md)
-- [Flatten](app/src/test/java/com/igorwojda/list/flatten/Flatten.md)
-- [Binary search](app/src/test/java/com/igorwojda/list/search/binarysearch/BinarySearch.md)
-- [Surrounded letter](app/src/test/java/com/igorwojda/string/surroundedletter/SurroundedLetter.md) 
-- [Insertion sort](app/src/test/java/com/igorwojda/list/sort/insertionsort/InsertionSort.md)
-- [Quick sort](app/src/test/java/com/igorwojda/list/sort/quicksort/QuickSort.md)
-- [Radix sort](app/src/test/java/com/igorwojda/list/sort/radixsort/RadixSort.md)
-- [Doubly linked list](app/src/test/java/com/igorwojda/linkedlist/doubly/base/DoublyLinkedList.md)
-- [Max binary heap](app/src/test/java/com/igorwojda/tree/heap/maxbinaryheap/MaxBinaryHeap.md)
+
+- [Spiral matrix generator](src/test/kotlin/com/igorwojda/matrix/spiralmatrixgenerator/desc.md)
+- [Find rectangle](src/test/kotlin/com/igorwojda/matrix/findrectangle/desc.md)
+- [Queue](src/test/kotlin/com/igorwojda/queue/basic/desc.md)
+- [Combine queues](src/test/kotlin/com/igorwojda/queue/combine/desc.md)
+- [Stack](src/test/kotlin/com/igorwojda/stack/basic/desc.md)
+- [Bubble sort](src/test/kotlin/com/igorwojda/list/sort/bubblesort/desc.md)
+- [Selection sort](src/test/kotlin/com/igorwojda/list/sort/selectionsort/desc.md)
+- [Square equals](src/test/kotlin/com/igorwojda/list/squareequal/desc.md)
+- [Sum zero](src/test/kotlin/com/igorwojda/list/sumzero/desc.md)
+- [Digit frequency](src/test/kotlin/com/igorwojda/integer/digitfrequency/desc.md)
+- [Get duplicated arguments](src/test/kotlin/com/igorwojda/string/getduplicatedarguments/desc.md)
+- [Find pair with target average](src/test/kotlin/com/igorwojda/list/pairaverage/desc.md)
+- [Binary search tree](src/test/kotlin/com/igorwojda/tree/binarysearchtree/desc.md)
+- [Tree traversal](src/test/kotlin/com/igorwojda/tree/classic/traversal/desc.md)
+- [Tree level width](src/test/kotlin/com/igorwojda/tree/classic/levelwidth/desc.md)
+- [Binary search tree (insert)](src/test/kotlin/com/igorwojda/binarytree/insert/desc.md)
+- [Binary search tree (validate)](src/test/kotlin/com/igorwojda/binarytree/validate/desc.md)
+- [Any callback](src/test/kotlin/com/igorwojda/various/anycallback/desc.md)
+- [Flatten](src/test/kotlin/com/igorwojda/list/flatten/desc.md)
+- [Binary search](src/test/kotlin/com/igorwojda/list/search/binarysearch/desc.md)
+- [Surrounded letter](src/test/kotlin/com/igorwojda/string/surroundedletter/desc.md)
+- [Insertion sort](src/test/kotlin/com/igorwojda/list/sort/insertionsort/desc.md)
+- [Quick sort](src/test/kotlin/com/igorwojda/list/sort/quicksort/desc.md)
+- [Radix sort](src/test/kotlin/com/igorwojda/list/sort/radixsort/desc.md)
+- [Doubly linked list](src/test/kotlin/com/igorwojda/linkedlist/doubly/base/desc.md)
+- [Max binary heap](src/test/kotlin/com/igorwojda/tree/heap/maxbinaryheap/desc.md)
 
 **Commander**
-- [List chunk](app/src/test/java/com/igorwojda/list/listchunk/ListChunk.md)
-- [Singly linked list](app/src/test/java/com/igorwojda/linkedlist/singly/base/SinglyLinkedList.md)
-- [Linked list midpoint](app/src/test/java/com/igorwojda/linkedlist/singly/midpoint/Midpoint.md)
-- [Circular check](app/src/test/java/com/igorwojda/linkedlist/singly/circularcheck/CircularCheck.md)
-- [Linked list take n-th element from last](app/src/test/java/com/igorwojda/linkedlist/singly/fromlast/FromLast.md)
-- [Is sub string](app/src/test/java/com/igorwojda/string/issubstring/IsSubstring.md)
-- [Merge sort](app/src/test/java/com/igorwojda/list/sort/mergesort/MergeSort.md)
-- [Fibonacci](app/src/test/java/com/igorwojda/integer/fibonacci/basic/Fibonacci.md)
-- [Fibonacci with recursive cache](app/src/test/java/com/igorwojda/integer/fibonacci/recursivecached/FibonacciRecursiveCached.md)
-- [Max sub list sum](app/src/test/java/com/igorwojda/list/maxsublistsum/MaxSubListSum.md)
-- [Min sub list length](app/src/test/java/com/igorwojda/list/minsublistlength/MinSubListLength.md)
-- [Subtract](app/src/test/java/com/igorwojda/list/subtract/Subtract.md)
+
+- [List chunk](src/test/kotlin/com/igorwojda/list/listchunk/desc.md)
+- [Singly linked list](src/test/kotlin/com/igorwojda/linkedlist/singly/base/desc.md)
+- [Linked list midpoint](src/test/kotlin/com/igorwojda/linkedlist/singly/midpoint/desc.md)
+- [Circular check](src/test/kotlin/com/igorwojda/linkedlist/singly/circularcheck/desc.md)
+- [Linked list take n-th element from last](src/test/kotlin/com/igorwojda/linkedlist/singly/fromlast/desc.md)
+- [Is sub string](src/test/kotlin/com/igorwojda/string/issubstring/desc.md)
+- [Merge sort](src/test/kotlin/com/igorwojda/list/sort/mergesort/desc.md)
+- [Fibonacci](src/test/kotlin/com/igorwojda/integer/fibonacci/basic/desc.md)
+- [Fibonacci with recursive cache](src/test/kotlin/com/igorwojda/integer/fibonacci/recursivecached/desc.md)
+- [Max sub list sum](src/test/kotlin/com/igorwojda/list/maxsublistsum/desc.md)
+- [Min sub list length](src/test/kotlin/com/igorwojda/list/minsublistlength/desc.md)
+- [Subtract](src/test/kotlin/com/igorwojda/list/subtract/desc.md)
+- [Coins](src/test/kotlin/com/igorwojda/list/coins/desc.md)
 
 # Useful links
 
 ## More coding challenges
 
-- [GeeksForGeeks](https://practice.geeksforgeeks.org) - large and nicely segregated set of problems.
+### Challanges
+
+- [GeeksForGeeks](https://practice.geeksforgeeks.org/explore) - large and nicely segregated set of problems.
 - [HackerRank](https://www.hackerrank.com/dashboard) - large set of problems and additional interview problems for
   business.
+- [TopCoder](https://www.topcoder.com/challenge) - platforms for competitive programming online.
 - [Project Euler](https://projecteuler.net/archives) - more complex challenges, usually related to mathematics. The site
   already contains 600+ problems and a new code challenge is available very week or two. You will probably have to
   discuss the problem with the community because solutions are not on the website.
 - [Advent of code](https://adventofcode.com/2018/events) - one month of various programing problems released daily at
   the end of the year. Fortunately archive of past events is still there.
-- [Code Google Com Codejam](https://code.google.com/codejam/past-contests) - Google Code Jam, calls on programmers
-  around the world to solve challenging, algorithmic puzzles against the clock. They publish all the past problems on
-  their website.
 - [CoderByte](https://coderbyte.com/challenges) - 200+ challenges, data structures / algorithms / company interview
   problems segregated by difficulty. Unfortunately most of them are only available for premium users. Premium gives you
   access to premium step-by-step solutions and user solutions.
 - [CodeChef](https://www.codechef.com/problems/school) - contains set of programming problems segregated by difficulty.
 - [LeetCode](https://leetcode.com/problemset/all) - data structures / algorithms / company interview problems segregated
   by difficulty.
-- [Code Forces](http://codeforces.com/problemset) - list of programming puzzles is smaller than other websites, but you
-  will still have plenty of problems to solve.
-- [Spoj](https://www.spoj.com/problems/classical) - list of programming puzzles is smaller than other websites, but you
-  will still have plenty of problems to solve.
+- [Code Forces](http://codeforces.com/problemset) - list of programming challenges is smaller than other websites, but
+  you will still have plenty of problems to solve.
+- [Spoj](https://www.spoj.com/problems/classical) - list of programming challenges is smaller than other websites, but
+  you will still have plenty of problems to solve.
+- [Exercism](https://exercism.io/) - coding challenge website that offers 3100+ challenges spanning 52 different programming languages.
+
+### Game challanges
+- [CodeWars](https://www.codewars.com/) - solve visuial challanges by writing code for the.
+- [CodinGame](https://www.codingame.com/) - solve visuial challanges by writing code for the.
 
 ## Video courses
 
@@ -175,7 +194,7 @@ your time before you take a look at the presented solution. **Good luck!**
 # Contribute
 
 Feedback and new contributions are welcome whether it's through bug reports or new PRs. To add new coding puzzle just
-follow this [guide](https://github.com/igorwojda/kotlin-coding-puzzle/wiki/Adding-a-new-puzzle) and open PR.
+follow this [guide](https://github.com/igorwojda/kotlin-coding-challenges/wiki/Adding-a-new-puzzle) and open PR.
 
 ## Contributors
 
@@ -186,7 +205,7 @@ follow this [guide](https://github.com/igorwojda/kotlin-coding-puzzle/wiki/Addin
 
 # Author
 
-[![Follow me](https://github.com/igorwojda/kotlin-coding-puzzle/raw/master/misc/image/avatar.png)](https://twitter.com/igorwojda)
+[![Follow me](https://github.com/igorwojda/kotlin-coding-challenges/raw/main/misc/image/avatar.png)](https://twitter.com/igorwojda)
 
 [![Follow me](https://img.shields.io/twitter/follow/igorwojda?style=social)](https://twitter.com/igorwojda)
 
