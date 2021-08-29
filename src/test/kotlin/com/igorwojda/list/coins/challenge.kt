@@ -4,9 +4,18 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 
-private fun getCoins(amount: Int, coins: List<Int>): Int {
-    TODO("not implemented")
-}
+private fun getCoins(amount: Int, coins: List<Int>): Int =
+    coins.foldIndexed(
+        IntArray(amount + 1).apply { set(0, 1) },
+        { index: Int, acc: IntArray, _: Int ->
+            acc.apply {
+                indices.forEach { j ->
+                    if (j >= coins[index]) {
+                        acc[j] += acc[j - coins[index]]
+                    }
+                }
+            }
+        })[amount]
 
 private class Test {
     @Test

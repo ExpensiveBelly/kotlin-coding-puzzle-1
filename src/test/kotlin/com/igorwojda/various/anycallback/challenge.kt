@@ -16,7 +16,8 @@ private class Test {
 
     @Test
     fun `any callback returns false`() {
-        val callback: ((Int) -> Boolean) = { it > 3 }
-        anyCallback(listOf(1, 2, 3), callback) shouldBeEqualTo false
+        val x = sequenceOf(1, 2, 3).filter { print("$it "); it >= 2 }
+        print("before sum ")
+//        println(x.sum())
     }
 }
