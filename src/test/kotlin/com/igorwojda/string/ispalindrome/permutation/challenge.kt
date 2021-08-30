@@ -5,15 +5,21 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 
+@ExperimentalStdlibApi
 private fun isPermutationPalindrome(str: String): Boolean =
-    Random.nextBoolean().let { boolean ->
-        (if (boolean)
-            permutations(str) else str.permutations()).any { it.isPalindrome() }
+    Random.nextInt(3).let { randomInt ->
+        (when (randomInt) {
+            0 -> permutationsUnsafe(str)
+            1 -> str.permutationsUnsafe()
+            2 -> str.permutationsSafe()
+            else -> throw IllegalArgumentException()
+        }).any { it.isPalindrome() }
     }
 
-private fun permutations(str: String) = permutations("", str)
+private fun permutationsUnsafe(str: String) =
+    permutationsUnsafe("", str)
 
-private fun permutations(
+private fun permutationsUnsafe(
     prefix: String,
     str: String,
     result: List<String> = emptyList()
@@ -22,18 +28,18 @@ private fun permutations(
     return if (n == 0) result + prefix
     else {
         (0 until n).map { i ->
-            permutations(prefix + str[i], str.substring(0, i) + str.substring(i + 1, n))
+            permutationsUnsafe(prefix + str[i], str.substring(0, i) + str.substring(i + 1, n))
         }.flatten()
     }
 }
 
-@JvmName("permutations2")
-private fun String.permutations(): List<String> = when {
+@JvmName("permutationsUnsafe2")
+private fun String.permutationsUnsafe(): List<String> = when {
     isEmpty() -> emptyList()
     length == 1 -> listOf(this)
     else -> {
         val element = get(0)
-        drop(1).permutations().flatMap { s: String ->
+        drop(1).permutationsUnsafe().flatMap { s: String ->
             (0..s.length).map { i -> s.plusAt(i, element) }
         }
     }
@@ -46,10 +52,28 @@ private fun String.plusAt(index: Int, element: Char) = when (index) {
     else -> dropLast(length - index) + element + drop(index)
 }
 
+@ExperimentalStdlibApi
+private fun String.permutationsSafe(): List<String> =
+    DeepRecursiveFunction<String, List<String>> { string ->
+        when {
+            string.isEmpty() -> emptyList()
+            string.length == 1 -> listOf(string)
+            else -> {
+                val element = string[0]
+                string.drop(1).let {
+                    callRecursive(it).flatMap { s: String ->
+                        (0..s.length).map { i -> s.plusAt(i, element) }
+                    }
+                }
+            }
+        }
+    }(this)
+
+@ExperimentalStdlibApi
 private class Test {
     @Test
     fun `"gikig" is a palindrome`() {
-        isPermutationPalindrome("abc") shouldBeEqualTo false
+        isPermutationPalindrome("gikig") shouldBeEqualTo true
     }
 
     @Test
