@@ -3,44 +3,44 @@ package com.igorwojda.string.ispalindrome.basic
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-private fun isPalindrome(str: String): Boolean {
-    return str == str.reversed()
+fun String.isPalindrome(): Boolean {
+    return this == reversed()
 }
 
 private class Test {
 
     @Test
     fun `"aba" is a palindrome`() {
-        isPalindrome("aba") shouldBeEqualTo true
+        "aba".isPalindrome() shouldBeEqualTo true
     }
 
     @Test
     fun `" aba" is not a palindrome`() {
-        isPalindrome(" aba") shouldBeEqualTo false
+        " aba".isPalindrome() shouldBeEqualTo false
     }
 
     @Test
     fun `"aba " is not a palindrome`() {
-        isPalindrome("aba ") shouldBeEqualTo false
+        "aba ".isPalindrome() shouldBeEqualTo false
     }
 
     @Test
     fun `"greetings" is not a palindrome`() {
-        isPalindrome("greetings") shouldBeEqualTo false
+        "greetings".isPalindrome() shouldBeEqualTo false
     }
 
     @Test
     fun `"1000000001" a palindrome`() {
-        isPalindrome("1000000001") shouldBeEqualTo true
+        "1000000001".isPalindrome() shouldBeEqualTo true
     }
 
     @Test
     fun `"Fish hsif" is not a palindrome`() {
-        isPalindrome("Fish hsif") shouldBeEqualTo false
+        "Fish hsif".isPalindrome() shouldBeEqualTo false
     }
 
     @Test
     fun `"pennep" a palindrome`() {
-        isPalindrome("pennep") shouldBeEqualTo true
+        "pennep".isPalindrome() shouldBeEqualTo true
     }
 }
